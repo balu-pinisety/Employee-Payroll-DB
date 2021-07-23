@@ -27,3 +27,8 @@ insert into employee_payroll(name,salary,start) values
 #UC4
 #To retrieve all data added to Database
 select * from employee_payroll;
+
+#UC5
+select salary from  employee_payroll where name='AAYUSHI'; #Selecting AAYUSHI entry
+#Selecting Employee from Date range
+select * from employee_payroll where start between cast('2021-04-01' as date) and date(now());
