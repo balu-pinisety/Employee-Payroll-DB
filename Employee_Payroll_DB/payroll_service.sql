@@ -12,7 +12,7 @@ CREATE TABLE employee_payroll ( #creates Table
     PRIMARY KEY (id) #Primary Key To make Id unique
 );
 select * from employee_payroll;
-#drop table employee_payroll; #To delete the table
+drop table employee_payroll; #To delete the table
 
 #UC3
 #Add data to Table of database
@@ -65,3 +65,16 @@ select avg(salary) from employee_payroll where gender='M' group by gender;
 select count(salary) from employee_payroll;
 select count(salary) from employee_payroll where gender='F' group by gender;
 select count(salary) from employee_payroll where gender='M' group by gender;
+
+#UC8- To extend table by adding more columns
+alter table employee_payroll add phone varchar(13),
+add address varchar(200) default 'default',
+add department varchar(20) not null;
+#Updating column values by name
+update employee_payroll set department='Marketing'
+where name in ('SATYENDRA','DILEEP','KAJAL');
+update employee_payroll set department='Finance'
+where name in ('SHEETHAL','AAYUSHI');
+update employee_payroll set department='Sales'
+where name in ('SIVA');
+select * from employee_payroll;
