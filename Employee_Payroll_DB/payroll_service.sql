@@ -78,3 +78,9 @@ where name in ('SHEETHAL','AAYUSHI');
 update employee_payroll set department='Sales'
 where name in ('SIVA');
 select * from employee_payroll;
+
+#UC9-To update table and modify values
+alter table employee_payroll drop column salary;
+alter table employee_payroll add basic_pay int, add deductions int,
+add taxable_pay int, add income_tax int, add net_pay int;
+select * from employee_payroll;
