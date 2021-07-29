@@ -117,3 +117,15 @@ foreign key (department_id) references department(id),
 primary key (employee_id, department_id)
 );
 select * from employee_department;
+
+#UC12-Adding extra table
+create table payroll(
+	id int primary key auto_increment not null,
+	basic_pay int,
+    deductions int,
+    taxable_pay int,
+    income_tax int,
+    emp_id int,
+    foreign key (emp_id) references employee(id)
+);
+select * from payroll;
