@@ -5,7 +5,7 @@ use payroll_service;
 
 #UC2
 CREATE TABLE employee_payroll ( #creates Table
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(150),
     salary DOUBLE NOT NULL,
     start DATE NOT NULL,
@@ -88,6 +88,32 @@ select * from employee_payroll;
 #UC10-To add two entities by same name in the Table
 insert into employee_payroll (name,gender,start,department,basic_pay,deductions,taxable_pay,income_tax,net_pay)
 values('Terisa','F','2018-07-08','Marketing',300000,100000,200000,500000,1000000);
-select * from employee_payroll;
 insert into employee_payroll (name,gender,start,department,basic_pay,deductions,taxable_pay,income_tax,net_pay)
 values('Terisa','F','2018-01-06','Sales',300000,0,0,0,0);
+select * from employee_payroll;
+
+#UC11-Implementing ER Diagram into Payroll Service DB
+alter table employee_payroll drop column department;
+create table department(
+	id int auto_increment not null,
+	dept_name varchar(21) not null,
+    primary key (id)
+);
+insert into department (dept_name) values ('Sales'),('Marketing'),('Finance');
+select * from department;
+create table employee(
+	id int auto_increment not null,
+	name varchar(21) not null,
+    salary int not null,
+    start date not null,
+    primary key (id)
+);
+select * from employee;
+create table employee_department(
+employee_id int not null,
+department_id int not null,
+foreign key (employee_id) references employee(id),
+foreign key (department_id) references department(id),
+primary key (employee_id, department_id)
+);
+select * from employee_department;
