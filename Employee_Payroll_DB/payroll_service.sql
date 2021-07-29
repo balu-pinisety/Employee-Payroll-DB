@@ -84,3 +84,10 @@ alter table employee_payroll drop column salary;
 alter table employee_payroll add basic_pay int, add deductions int,
 add taxable_pay int, add income_tax int, add net_pay int;
 select * from employee_payroll;
+
+#UC10-To add two entities by same name in the Table
+insert into employee_payroll (name,gender,start,department,basic_pay,deductions,taxable_pay,income_tax,net_pay)
+values('Terisa','F','2018-07-08','Marketing',300000,100000,200000,500000,1000000);
+select * from employee_payroll;
+insert into employee_payroll (name,gender,start,department,basic_pay,deductions,taxable_pay,income_tax,net_pay)
+values('Terisa','F','2018-01-06','Sales',300000,0,0,0,0);
